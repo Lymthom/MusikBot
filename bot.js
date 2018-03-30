@@ -48,7 +48,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
       else{
           if(client.guilds.get(oldMember.guild.id).voiceConnection != null){
               if(client.guilds.get(oldMember.guild.id).voiceConnection.channel.id === oldUserChannel.id){
-                    if(oldUserChannel.members.size < 1){
+                    if(oldUserChannel.members.size < 2){
                         serverQueue.songs = [];
                         serverQueue.connection.dispatcher.end('No members left in the channel!')
                     }    
