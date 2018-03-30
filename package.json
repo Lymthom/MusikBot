@@ -7,7 +7,9 @@
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "11.1.0",
+    "discord.js": "11.3.2",
+    "opusscript": "0.0.6",
+    "ytdl-core": "0.20.2",
     "request": "2.81.0"
   }
 }
