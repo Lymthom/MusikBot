@@ -205,10 +205,16 @@ ${videos.map(video2 => `**${++index}-** ${video2.title}`).join('\n')}
                 .setColor([250, 0, 0])
             return msg.channel.sendEmbed(embedsong1);
                  }
-        var embedsong2 = new Discord.RichEmbed()
-                .setTitle(`**Ich spiele gerade: ${serverQueue.songs[0].title}**`)
+            var embedsong2 = new Discord.RichEmbed()
+                .setTitle(`__**${serverQueue.songs[0].title}**__`)
+                .setThumbnail(serverQueue.songs[0].thumbnail)
+                .setDescription(`
+Von: ${serverQueue.songs[0].channel}
+Dauer: ${serverQueue.songs[0].duration}
+Link: ${serverQueue.songs[0].url}
+`)
                 .setColor([250, 0, 0])
-            return msg.channel.sendEmbed(embedsong2);
+              return msg.channel.sendEmbed(embedsong2);
     }
     else if(msg.content.startsWith(`${PREFIX}volume`)){
         if(!serverQueue){
@@ -354,7 +360,10 @@ async function handleVideo(video, msg, voiceChannel, playlist=false){
     const song = {
         id: video.id,
         title: Util.escapeMarkdown(video.title),
-        url: `https://www.youtube.com/watch?v=${video.id}`
+        url: `https://www.youtube.com/watch?v=${video.id}`,
+        thumbnail: video.thumbnails.default.url,
+        channel: video.channel.title,
+        duration: `${video.duration.hours}:${video.duration.minutes}:${video.duration.seconds}`
     };
     if(!serverQueue){
         const queueConstruct = {
