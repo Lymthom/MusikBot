@@ -343,7 +343,7 @@ async function handleVideo(video, msg, voiceChannel, playlist=false){
         url: `https://www.youtube.com/watch?v=${video.id}`,
         thumbnail: video.thumbnails.default.url,
         channel: video.channel.title,
-        duration: `${video.duration.hours}:${video.duration.minutes}:${video.duration.seconds}`
+        duration: `${video.duration.hours}hrs : ${video.duration.minutes}min : ${video.duration.seconds}sec`
     };
     if(!serverQueue){
         const queueConstruct = {
